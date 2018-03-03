@@ -8,6 +8,7 @@
 
     <string name="username">Username</string>
     <string name="user_email">abc@gmail.com</string>
+    <string name="tempPasswordString">password</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard_1">Trends</string>
@@ -18,4 +19,5 @@
     <string name="PasswordHint">Password</string>
     <string name="ForgotPassword">Forgot Password?</string>
     <string name="LoginButtonText">Login</string>
+    <string name="LoginFailToast">Incorrect Email or Password</string>
 </resources>
