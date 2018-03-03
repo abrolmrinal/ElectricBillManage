@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ElectricBillManage</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="bill">Bills</string>
+    <string name="complaints">Complaints</string>
+    <string name="setting">Settings</string>
+    <string name="logout">Logout</string>
 </resources>
