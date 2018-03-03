@@ -5,12 +5,17 @@
     <string name="complaints">Complaints</string>
     <string name="setting">Settings</string>
     <string name="logout">Logout</string>
+
     <string name="username">Username</string>
     <string name="user_email">abc@gmail.com</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard_1">Trends</string>
     <string name="dashboard_2">Usage</string>
     <string name="dashboard_3">Analysis</string>
+
+    <string name="EmailAddressHint">Email Address</string>
+    <string name="PasswordHint">Password</string>
+    <string name="ForgotPassword">Forgot Password?</string>
+    <string name="LoginButtonText">Login</string>
 </resources>
