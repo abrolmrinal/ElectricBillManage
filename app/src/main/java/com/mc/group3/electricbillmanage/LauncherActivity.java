@@ -1,12 +1,17 @@
 package com.mc.group3.electricbillmanage;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 
 public class LauncherActivity extends AppCompatActivity {
@@ -36,7 +41,12 @@ public class LauncherActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_dashboard:
+                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.fragment_container, new Dashboard());
+                                ft.commit();
+                        }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
 
@@ -53,4 +63,6 @@ public class LauncherActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
