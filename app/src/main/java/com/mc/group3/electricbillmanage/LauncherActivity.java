@@ -41,15 +41,17 @@ public class LauncherActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                         switch (menuItem.getItemId()) {
                             case R.id.nav_dashboard:
-                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                 ft.replace(R.id.fragment_container, new Dashboard());
                                 ft.commit();
+                                break;
+                            case R.id.nav_bill:
+                                ft.replace(R.id.fragment_container,new Bills());
+                                ft.commit();
+                                break;
                         }
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
                         return true;
                     }
                 });

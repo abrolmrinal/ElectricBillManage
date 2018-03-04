@@ -17,14 +17,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/darker_gray"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
         <LinearLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="57dp"
+            android:layout_marginTop="56dp"
             android:orientation="vertical"></LinearLayout>
 
     </FrameLayout>
