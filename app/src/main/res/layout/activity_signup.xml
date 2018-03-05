@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    tools:context="com.mc.group3.electricbillmanage.LoginActivity">
+    tools:context="com.mc.group3.electricbillmanage.SignupActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <ImageView
-        android:id="@+id/loginLogoImage"
+        android:id="@+id/signupLogoImage"
         android:layout_width="170dp"
         android:layout_height="178dp"
         android:layout_marginEnd="16dp"
@@ -20,22 +21,37 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/loginEmailEdit"
+        android:id="@+id/signupUsernameEdit"
         android:layout_width="330dp"
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupLogoImage" />
+
+    <EditText
+        android:id="@+id/signupEmailEdit"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/EmailAddressHint"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginLogoImage" />
+        app:layout_constraintTop_toBottomOf="@+id/signupUsernameEdit" />
 
     <EditText
-        android:id="@+id/loginPassEdit"
+        android:id="@+id/signupPassEdit"
         android:layout_width="330dp"
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
@@ -47,58 +63,24 @@
         android:textColorHint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/signupEmailEdit" />
 
     <Button
-        android:id="@+id/loginLoginButton"
+        android:id="@+id/signupButton"
         android:layout_width="330dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="loginButtonListener"
-        android:text="@string/LoginButtonText"
-        android:textColor="@color/colorWhite"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassEdit" />
-
-    <TextView
-        android:id="@+id/loginForgotText"
-        android:layout_width="145dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/ForgotPassword"
-        android:textColor="@color/colorBlack"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginLoginButton" />
-
-    <Button
-        android:id="@+id/loginSignupButton"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorWhite"
-        android:textSize="10sp"
-        android:onClick="loginSignupListener"
+        android:onClick="signupButtonListener"
         android:text="@string/SignupButtonText"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginForgotText"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/signupPassEdit"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

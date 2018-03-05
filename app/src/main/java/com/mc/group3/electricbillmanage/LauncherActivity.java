@@ -1,5 +1,6 @@
 package com.mc.group3.electricbillmanage;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,10 +14,29 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LauncherActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+
+    TextView userEmail;
+    TextView userName;
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        if(firebaseUser == null){
+            Intent intentToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intentToLogin);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +44,10 @@ public class LauncherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launcher);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        userEmail = findViewById(R.id.textView3);
+        userName = findViewById(R.id.textView2);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,6 +75,11 @@ public class LauncherActivity extends AppCompatActivity {
                                 ft.replace(R.id.fragment_container,new Bills());
                                 ft.commit();
                                 break;
+                            case R.id.nav_logout:
+                                firebaseAuth.signOut();
+                                Intent intentToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(intentToLogin);
+                                finish();
                         }
                         return true;
                     }

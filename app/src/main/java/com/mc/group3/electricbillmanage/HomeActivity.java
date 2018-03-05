@@ -6,14 +6,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class HomeActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;
-
     private SliderAdapter sliderAdapter;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser != null){
+            Intent intentToLauncher = new Intent(getApplicationContext(), LauncherActivity.class);
+            startActivity(intentToLauncher);
+            finish();
+        }
+    }
 
 
     @Override
@@ -21,13 +35,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         mSlideViewPager = findViewById(R.id.slideviewpager);
-
         sliderAdapter = new SliderAdapter(this);
-
         mSlideViewPager.setAdapter(sliderAdapter);
-
-
     }
 
     public void LoginFunction(View view)
