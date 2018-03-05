@@ -1,12 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usage Test"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:elevation="3dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Today"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView2"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear1"
+                android:layout_margin="10dp"
+                android:text="This Month"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView3"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,8 +47,8 @@ public class LauncherActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        userEmail = findViewById(R.id.textView3);
-        userName = findViewById(R.id.textView2);
+        userEmail = findViewById(R.id.emailid);
+        userName = findViewById(R.id.username);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,6 +56,10 @@ public class LauncherActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        //TODO will default to dashboard() if orientation changed
+        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+        ft1.replace(R.id.fragment_container,new Dashboard());
+        ft1.commit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -84,6 +89,16 @@ public class LauncherActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+        /*
+        ****************************************
+        *      TODO Change this after login
+        * **************************************
+        View header= navigationView.getHeaderView(0);
+        TextView uname=(TextView)header.findViewById(R.id.username);
+        uname.setText();
+        TextView emailid=(TextView)header.findViewById(R.id.emailid);
+        emailid.setText();
+        */
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
