@@ -73,6 +73,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
+        android:onClick="resetPasswordListener"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/ForgotPassword"
         android:textColor="@color/colorBlack"

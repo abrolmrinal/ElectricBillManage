@@ -91,4 +91,9 @@ public class LoginActivity extends AppCompatActivity {
         Intent intentToSignup = new Intent(this, SignupActivity.class);
         startActivity(intentToSignup);
     }
+    public void resetPasswordListener(View v){
+        Intent intentToResetPassword = new Intent(this, ResetPasswordActivity.class);
+        startActivity(intentToResetPassword);
+
+    }
 }

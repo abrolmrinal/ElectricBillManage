@@ -28,5 +28,6 @@
     <string name="ShortPassword">Password must be 8 or more characters</string>
 
     <string name="SignupFailed">Signup failed</string>
+    <string name="buttonResetPassword">RESET PASSWORD</string>
 
 </resources>

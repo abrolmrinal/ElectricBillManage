@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".LauncherActivity"></activity>
+        <activity android:name=".LauncherActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,9 +22,12 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".SlideActivity" />
-        <activity android:name=".SignupActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".LoginActivity"></activity>
+        <activity
+            android:name=".SignupActivity"
+            android:parentActivityName=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ResetPasswordActivity"
+            android:parentActivityName=".LoginActivity"/>
     </application>
 
 </manifest>
