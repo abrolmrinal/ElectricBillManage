@@ -26,4 +26,14 @@ public class Dashboard_Usage extends Fragment {
         return inflater.inflate(R.layout.fragment_dashboard_usage, container, false);
     }
 
+    /*
+    tabDigit1.start();
+    ViewCompat.postOnAnimationDelayed(tabDigit1, this, 1000);
+
+    @Override
+    public void run() {
+        tabDigit1.start();
+        ViewCompat.postOnAnimationDelayed(tabDigit1, this, 1000);
+     */
+
 }
