@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +25,9 @@ public class SignupActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
+    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage.username";
+    private final String SIGNUP = "com.mc.group3.electricbillmanage.signup";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signupButtonListener(View v){
-        final String username = signupUsernameEdit.getText().toString();
+        String username = signupUsernameEdit.getText().toString();
         String email = signupEmailEdit.getText().toString();
         String password = signupPassEdit.getText().toString();
 
@@ -59,12 +64,20 @@ public class SignupActivity extends AppCompatActivity {
             signupPassEdit.setText("");
         }
         else{
+            //Save username to a SharedPreferences file
+            SharedPreferences SP = getApplicationContext().getSharedPreferences(
+                    getString(R.string.sharedPrefFile1), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = SP.edit();
+            editor.putString(EXTRA_MESSAGE, username);
+            editor.apply();
+
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Intent intentToLauncher = new Intent(SignupActivity.this, LauncherActivity.class);
+                                intentToLauncher.putExtra(EXTRA_MESSAGE, SIGNUP);
                                 startActivity(intentToLauncher);
                                 finish();
                             }

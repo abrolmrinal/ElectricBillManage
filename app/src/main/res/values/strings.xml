@@ -30,4 +30,7 @@
     <string name="SignupFailed">Signup failed</string>
     <string name="buttonResetPassword">RESET PASSWORD</string>
 
+    <string name="sharedPrefFile1">com.mc.group3.electricbillmanage.SHARED_PREF_1</string>
+    <string name="sharedPrefDefaultUsername">username</string>
+
 </resources>

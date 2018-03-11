@@ -1,6 +1,9 @@
 package com.mc.group3.electricbillmanage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -17,14 +20,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class LauncherActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+
+    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage.username";
+    private final String SIGNUP = "com.mc.group3.electricbillmanage.signup";
+    private String recv_username;
 
     TextView userEmail;
     TextView userName;
@@ -50,6 +60,25 @@ public class LauncherActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.emailid);
         userName = findViewById(R.id.username);
 
+        String callingActivity = getIntent().getStringExtra(EXTRA_MESSAGE);
+        if(callingActivity != null){
+            if(callingActivity.equals(SIGNUP)){
+                SharedPreferences SP = getApplicationContext().getSharedPreferences(
+                        getString(R.string.sharedPrefFile1), Context.MODE_PRIVATE);
+                recv_username = SP.getString(EXTRA_MESSAGE, getString(R.string.sharedPrefDefaultUsername));
+                UserProfileChangeRequest newProfile = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(recv_username).build();
+
+                firebaseUser.updateProfile(newProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        //Remove this before submission
+                        System.out.println("\n+++++++++++++++++++++\n \nADDED USERNAME\n \n++++++++++++++++++++++\n");
+                    }
+                });
+            }
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -62,6 +91,7 @@ public class LauncherActivity extends AppCompatActivity {
         ft1.commit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -89,16 +119,18 @@ public class LauncherActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        /*
-        ****************************************
-        *      TODO Change this after login
-        * **************************************
-        View header= navigationView.getHeaderView(0);
-        TextView uname=(TextView)header.findViewById(R.id.username);
-        uname.setText();
-        TextView emailid=(TextView)header.findViewById(R.id.emailid);
-        emailid.setText();
-        */
+//        ****************************************
+//        *      TODO Change this after login
+//        * **************************************
+        if(firebaseUser != null){
+            View header= navigationView.getHeaderView(0);
+            TextView uname=(TextView)header.findViewById(R.id.username);
+            uname.setText(firebaseUser.getDisplayName());
+            TextView emailid=(TextView)header.findViewById(R.id.emailid);
+            emailid.setText(firebaseUser.getEmail());
+            navigationView.invalidate();
+        }
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
