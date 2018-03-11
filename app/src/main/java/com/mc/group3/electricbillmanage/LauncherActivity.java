@@ -69,6 +69,8 @@ public class LauncherActivity extends AppCompatActivity {
         String callingActivity = getIntent().getStringExtra(EXTRA_MESSAGE);
         if(callingActivity != null){
             if(callingActivity.equals(SIGNUP)){
+
+                ///> Update username of new user
                 SharedPreferences SP = getApplicationContext().getSharedPreferences(
                         getString(R.string.sharedPrefFile1), Context.MODE_PRIVATE);
                 recv_username = SP.getString(EXTRA_MESSAGE, getString(R.string.sharedPrefDefaultUsername));
@@ -82,6 +84,16 @@ public class LauncherActivity extends AppCompatActivity {
                         System.out.println("\n+++++++++++++++++++++\n \nADDED USERNAME\n \n++++++++++++++++++++++\n");
                     }
                 });
+
+                ///> Add new user to database and initialise values to zero
+                String uid = firebaseUser.getUid();
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference();
+                String pushedUID = databaseReference.push().getKey();
+                databaseReference.child("users").child(pushedUID).setValue(uid);
+                databaseReference.child("users").child(uid).child("usage_week").setValue(111111);
+                databaseReference.child("users").child(uid).child("usage_month").setValue(111111);
+
             }
         }
 
