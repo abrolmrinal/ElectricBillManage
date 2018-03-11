@@ -90,9 +90,9 @@ public class LauncherActivity extends AppCompatActivity {
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference databaseReference = firebaseDatabase.getReference();
                 String pushedUID = databaseReference.push().getKey();
-                databaseReference.child("users").child(pushedUID).setValue(uid);
-                databaseReference.child("users").child(uid).child("usage_week").setValue(111111);
-                databaseReference.child("users").child(uid).child("usage_month").setValue(111111);
+                databaseReference.child("live_reading").child(pushedUID).setValue(uid);
+                databaseReference.child("live_reading").child(uid).child("usage_week").setValue(111111);
+                databaseReference.child("live_reading").child(uid).child("usage_month").setValue(111111);
 
             }
         }

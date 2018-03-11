@@ -44,35 +44,48 @@ public class Dashboard_Usage extends Fragment implements Runnable {
         final List<TabDigit> MONTH=new ArrayList<TabDigit>();
 
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit1);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit2);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit3);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit4);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit5);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit6);
+        tabDigit.elapsedTime(300);
         WEEK.add(tabDigit);
 
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit7);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit8);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit9);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit10);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit11);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit12);
+        tabDigit.elapsedTime(300);
         MONTH.add(tabDigit);
 
         FirebaseDatabase fdb= FirebaseDatabase.getInstance();
         DatabaseReference myref=fdb.getReference();
-        final DatabaseReference week_ref=myref.child("users").child(firebaseUser.getUid()).child("usage_week").getRef();
-        DatabaseReference month_ref=myref.child("users").child(firebaseUser.getUid()).child("usage_month").getRef();
+        System.out.println("userid="+firebaseUser.getUid());
+        DatabaseReference week_ref=myref.child("live_reading").child(firebaseUser.getUid()).child("usage_week").getRef();
+        DatabaseReference month_ref=myref.child("live_reading").child(firebaseUser.getUid()).child("usage_month").getRef();
 
         week_ref.addValueEventListener(new ValueEventListener() {
             String prev_week;
