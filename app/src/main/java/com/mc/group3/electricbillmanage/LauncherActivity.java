@@ -19,12 +19,18 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -78,6 +84,27 @@ public class LauncherActivity extends AppCompatActivity {
                 });
             }
         }
+
+//        String uid=firebaseUser.getUid();
+//        FirebaseDatabase fdb= FirebaseDatabase.getInstance();
+//        DatabaseReference myref=fdb.getReference();
+//        DatabaseReference tt=myref.child("users").child(uid).child("usage_week").getRef();
+//
+//        tt.addValueEventListener(new ValueEventListener() {
+//                                     @Override
+//                                     public void onDataChange(DataSnapshot dataSnapshot) {
+//                                         String outp;
+//                                         Integer i=dataSnapshot.getValue(Integer.class);
+//                                         outp=Integer.toString(i);
+//                                         Toast.makeText(getApplicationContext(), outp+":"+Integer.toString(outp.length()), Toast.LENGTH_SHORT).show();
+//
+//                                     }
+//
+//                                     @Override
+//                                     public void onCancelled(DatabaseError databaseError) {
+//
+//                                     }
+//                                 });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

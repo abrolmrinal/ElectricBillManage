@@ -35,40 +35,7 @@
                 android:orientation="horizontal">
 
                 <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit3"
+                    android:id="@+id/tabDigit6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -90,7 +57,40 @@
                     app:textSize="60dp" />
 
                 <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit6"
+                    android:id="@+id/tabDigit4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -118,40 +118,7 @@
                 android:orientation="horizontal">
 
                 <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:backgroundColor="#000000"
-                    app:padding="10dp"
-                    app:textColor="#ffffff"
-                    app:textSize="60dp" />
-
-                <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit10"
+                    android:id="@+id/tabDigit12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -173,7 +140,40 @@
                     app:textSize="60dp" />
 
                 <com.xenione.digit.TabDigit
-                    android:id="@+id/tabDigit12"
+                    android:id="@+id/tabDigit10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:backgroundColor="#000000"
+                    app:padding="10dp"
+                    app:textColor="#ffffff"
+                    app:textSize="60dp" />
+
+                <com.xenione.digit.TabDigit
+                    android:id="@+id/tabDigit7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
