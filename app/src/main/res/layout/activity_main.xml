@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSplash"
+    android:background="#2980B9 "
     tools:context="com.mc.group3.electricbillmanage.MainActivity">
 
     <ImageView

@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +66,9 @@ public class LauncherActivity extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
         userEmail = findViewById(R.id.emailid);
         userName = findViewById(R.id.username);
+
+//        Window win = getWindow();
+//        win.setStatusBarColor(16777215);
 
         String callingActivity = getIntent().getStringExtra(EXTRA_MESSAGE);
         if(callingActivity != null){

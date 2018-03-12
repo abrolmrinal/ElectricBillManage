@@ -46,15 +46,15 @@
         android:layout_marginTop="68dp"
         android:gravity="center_horizontal"
         android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/accent1"
         android:textSize="30sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/slide_text"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="?attr/colorPrimaryDark"
+    android:background="#3498DB"
     android:gravity="bottom"
     android:orientation="horizontal"
     android:padding="30dp"
@@ -35,7 +35,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="30dp"
-            android:text="@string/username" />
+            android:text="@string/username"
+            android:textColor="@color/cardview_light_background" />
 
         <TextView
             android:id="@+id/emailid"
@@ -44,7 +45,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/user_email" />
+            android:text="@string/user_email"
+            android:textColor="@color/cardview_light_background" />
     </LinearLayout>
 
 </LinearLayout>
