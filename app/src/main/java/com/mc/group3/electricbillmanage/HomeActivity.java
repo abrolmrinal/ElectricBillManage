@@ -64,8 +64,14 @@ public class HomeActivity extends AppCompatActivity {
         nxbt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                mSlideViewPager.setCurrentItem(currentPage+1);
-
+                if(currentPage == 2){
+                    Intent intentToLogin = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intentToLogin);
+                    finish();
+                }
+                else {
+                    mSlideViewPager.setCurrentItem(currentPage + 1);
+                }
             }
         });
 

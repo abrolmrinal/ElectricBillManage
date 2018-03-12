@@ -7,6 +7,22 @@
     android:background="@color/colorPrimary"
     tools:context="com.mc.group3.electricbillmanage.HomeActivity">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/slideviewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dotsLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </android.support.v4.view.ViewPager>
+
     <FrameLayout
         android:id="@+id/prevButtonFrameLayout"
         android:layout_width="60dp"
@@ -16,6 +32,7 @@
         android:layout_marginStart="16dp"
         android:clickable="false"
         android:focusable="false"
+        android:visibility="invisible"
         android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dotsLayout"
@@ -32,6 +49,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:visibility="invisible"
             android:background="@drawable/ic_arrow_back_white_24dp" />
 
     </FrameLayout>
@@ -45,6 +63,7 @@
         android:layout_marginStart="16dp"
         android:clickable="false"
         android:focusable="false"
+        android:visibility="visible"
         android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/slideviewpager"
@@ -61,24 +80,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:visibility="visible"
             android:background="@drawable/ic_arrow_forward_white_24dp"/>
     </FrameLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/slideviewpager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/dotsLayout"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-    </android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:id="@+id/dotsLayout"
