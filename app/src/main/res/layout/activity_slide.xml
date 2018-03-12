@@ -16,39 +16,45 @@
     <!--tools:context="com.jijith.gifanimation.MainActivity">-->
 
 
+    <ImageView
+        android:id="@+id/slide_image"
+        android:layout_width="210dp"
+        android:layout_height="236dp"
+        android:layout_below="@+id/slide_upper"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sec" />
+
     <TextView
         android:id="@+id/slide_upper"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         android:gravity="center_horizontal"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/accent1"
         android:textSize="30sp"
         android:textStyle="normal|bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/slide_image"
-        android:layout_width="300dp"
-        android:layout_height="3x00dp"
-        android:layout_below="@+id/slide_upper"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slide_upper"
-        app:srcCompat="@drawable/sec" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468" />
 
     <TextView
         android:id="@+id/slide_text"
@@ -57,7 +63,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -67,44 +75,10 @@
         android:textStyle="normal"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slide_image"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custom_button"
-        android:foregroundGravity="center_horizontal|center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/slide_text"
-        app:layout_constraintTop_toBottomOf="@+id/slide_image"
-        app:layout_constraintVertical_bias="1.0">
-
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_arrow_forward_white_24dp"
-            android:bottomLeftRadius="30dp"
-            android:bottomRightRadius="30dp"
-            android:onClick="LoginFunction"
-            android:topLeftRadius="30dp"
-
-            android:topRightRadius="30dp" />
-    </FrameLayout>
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
 
 </android.support.constraint.ConstraintLayout>

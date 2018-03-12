@@ -57,7 +57,7 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
         TextView slideTextView = (TextView) view.findViewById((R.id.slide_text));
         TextView slideTextView1 = (TextView) view.findViewById((R.id.slide_upper));
 
-        Button bt = (Button) view.findViewById(R.id.button);
+//        Button bt = (Button) view.findViewById(R.id.button);
 
         slideImageView.setImageResource(slides_images[position]);
         slideTextView.setText(slides_heading[position]);
@@ -73,17 +73,17 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 //            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT2));
 //
 //        }
-        if(position == 2)
-        {
-//            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT3));
-            bt.setBackground(view.getResources().getDrawable(R.drawable.ic_check_white_24dp));
-            bt.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-//            bt.setVisibility(View.GONE);
-            bt.setClickable(false);
-        }
+//        if(position == 2)
+//        {
+////            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT3));
+//            bt.setBackground(view.getResources().getDrawable(R.drawable.ic_check_white_24dp));
+//            bt.setVisibility(View.VISIBLE);
+//        }
+//        else
+//        {
+////            bt.setVisibility(View.GONE);
+//            bt.setClickable(false);
+//        }
 
 
         container.addView(view);

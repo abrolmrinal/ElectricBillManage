@@ -3,11 +3,11 @@
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorAccent">#FF4081</color>-->
-    <color name="colorPrimary">#262938</color>
+    <color name="colorPrimary">#222454</color>
     <color name="colorPrimaryDark">#181A24</color>
     <color name="colorAccent">#FF4081</color>
     <!--<color name="colorWhite">#FFFFFF</color>-->
-    <color name="colorTransparentWhite">#888787</color>
+    <color name="colorTransparentWhite">#ffffff</color>
 
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
@@ -19,10 +19,10 @@
     <color name="colorWT3">#34bf49</color>
     <color name="colorWT">#7f181b</color>
 
-    <color name="home_bg">#494949</color>
-    <color name="accent1">#a33327</color>
-    <color name="accent2">#c7493a</color>
-    <color name="accent3">#ccffe400</color>
+    <color name="home_bg">#222454</color>
+    <color name="accent1">#ffffff</color>
+    <color name="accent2">#ffffff</color>
+    <color name="accent3">#40000000</color>
 
     <color name="button1">#2A184F</color>
     <color name="button2">#40000000</color>
