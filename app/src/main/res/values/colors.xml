@@ -11,4 +11,15 @@
 
     <color name="colorWhite">#d9d9d9</color>
     <color name="colorBlack">#000000</color>
+
+
+    <color name="colorSplash">#9f9fa3</color>
+    <color name="colorWT1">#0099e5</color>
+    <color name="colorWT2">#ff4c4c</color>
+    <color name="colorWT3">#34bf49</color>
+    <color name="colorWT">#7f181b</color>
+
+    <color name="button1">#2A184F</color>
+    <color name="button2">#40000000</color>
+
 </resources>

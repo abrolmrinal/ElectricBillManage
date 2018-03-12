@@ -1,6 +1,8 @@
 package com.mc.group3.electricbillmanage;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-/**
- * Created by abhijeet on 4/3/18.
- */
 
 public class SliderAdapter extends android.support.v4.view.PagerAdapter {
     Context context;
@@ -25,11 +23,15 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 
     public int[] slides_images = { R.drawable.sec,R.drawable.third,R.drawable.third_walk };
 
-    public String[] slides_heading={"           Get live meter reading \n                           and \n                 usage analysis ",
-    "        Get monthly bills updates \n                            and \n                      bill history ",
-    "                 File complaints \n                          and\n      track your complaint status"};
+//    public String[] slides_heading={"           Get live meter reading \n                           and \n                 usage analysis ",
+//    "        Get monthly bills updates \n                            and \n                      bill history ",
+//    "                 File complaints \n                          and\n      track your complaint status"};
 
-    public String[] slides_upper = {"METER READING","BILLS","COMPLAINTS"};
+    public String[] slides_heading = {"Get live meter reading\nand usage analysis",
+                                        "Get monthly bills updates\nand bill history",
+                                        "File complaints and\ntrack your complaint status"};
+
+    public String[] slides_upper = {"METER READINGS","BILLS","COMPLAINTS"};
 
 
 
@@ -42,7 +44,7 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object o) {
-        return view == (RelativeLayout) o;
+        return view == (ConstraintLayout) o;
     }
 
     @Override
@@ -60,15 +62,27 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
         slideImageView.setImageResource(slides_images[position]);
         slideTextView.setText(slides_heading[position]);
         slideTextView1.setText(slides_upper[position]);
-        bt.setText("Login");
 
-        if(position==2)
+        ViewPager viewPager = container.findViewById(R.id.slideviewpager);
+
+//        if(position == 0){
+//            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT1));
+//        }
+//
+//        if(position == 1){
+//            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT2));
+//
+//        }
+        if(position == 2)
         {
+//            viewPager.setBackgroundColor(container.getResources().getColor(R.color.colorWT3));
+            bt.setBackground(view.getResources().getDrawable(R.drawable.ic_check_white_24dp));
             bt.setVisibility(View.VISIBLE);
         }
         else
         {
-            bt.setVisibility(View.GONE);
+//            bt.setVisibility(View.GONE);
+            bt.setClickable(false);
         }
 
 
@@ -81,6 +95,6 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout)object);
+        container.removeView((ConstraintLayout)object);
     }
 }
