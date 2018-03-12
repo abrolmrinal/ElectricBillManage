@@ -21,7 +21,7 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 
     }
 
-    public int[] slides_images = { R.drawable.sec,R.drawable.third,R.drawable.third_walk };
+    public int[] slides_images = { R.drawable.first_wt,R.drawable.sec_wt,R.drawable.third_wt };
 
 //    public String[] slides_heading={"           Get live meter reading \n                           and \n                 usage analysis ",
 //    "        Get monthly bills updates \n                            and \n                      bill history ",
