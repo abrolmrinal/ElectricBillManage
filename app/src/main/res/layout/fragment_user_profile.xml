@@ -19,29 +19,38 @@
             android:id="@+id/imageView5"
             android:layout_width="90dp"
             android:layout_height="90dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_person_black_24dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.028"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
-    <View style="@style/Divider"/>
+    <View style="@style/Divider" />
 
     <TextView
         android:id="@+id/uname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical|start"
+        android:paddingStart="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="@string/username" />
     <TextView
         android:id="@+id/Name_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:text="TextView" />
 
     <View style="@style/Divider"/>
@@ -51,12 +60,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical|start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="@string/AddressHint" />
     <TextView
         android:id="@+id/address_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:text="TextView" />
 
     <View style="@style/Divider"/>
@@ -66,12 +83,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical|start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="@string/PhoneNo" />
     <TextView
         android:id="@+id/phone_number_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:text="TextView" />
 
     <View style="@style/Divider"/>
@@ -81,13 +106,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical|start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="@string/EmailAddressHint" />
     <TextView
         android:id="@+id/emai_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:text="TextView" />
+
+    <View style="@style/Divider" />
 
 
 

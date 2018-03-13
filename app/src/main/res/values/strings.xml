@@ -39,4 +39,10 @@
     <string name="FirstName">First Name</string>
     <string name="PhoneNo">Phone Number</string>
 
+    <string name="appName">ElectricBillManage</string>
+    <string name="dashboardActName">Dashboard</string>
+    <string user="accountDetailsActName">Account Details</string>
+    <string name="billsActName">Bills</string>
+    <string name="complaintsActName">Complaints</string>
+
 </resources>

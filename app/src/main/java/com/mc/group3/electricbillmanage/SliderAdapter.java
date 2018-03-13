@@ -27,8 +27,8 @@ public class SliderAdapter extends android.support.v4.view.PagerAdapter {
 //    "        Get monthly bills updates \n                            and \n                      bill history ",
 //    "                 File complaints \n                          and\n      track your complaint status"};
 
-    public String[] slides_heading = {"Get live meter reading\nand usage analysis",
-                                        "Get monthly bills updates\nand bill history",
+    public String[] slides_heading = {"Get live meter readings\nand usage analysis",
+                                        "Get monthly bill updates\nand bill history",
                                         "File complaints and\ntrack your complaint status"};
 
     public String[] slides_upper = {"METER READINGS","BILLS","COMPLAINTS"};
