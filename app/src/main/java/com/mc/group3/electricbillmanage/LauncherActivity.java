@@ -3,6 +3,7 @@ package com.mc.group3.electricbillmanage;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -149,7 +150,7 @@ public class LauncherActivity extends AppCompatActivity {
         ft1.replace(R.id.fragment_container,new Dashboard());
         ft1.commit();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -189,6 +190,21 @@ public class LauncherActivity extends AppCompatActivity {
             emailid.setText(firebaseUser.getEmail());
             navigationView.invalidate();
         }
+        View header=navigationView.getHeaderView(0);
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.closeDrawers();
+                int size = navigationView.getMenu().size();
+                for (int i = 0; i < size; i++) {
+                    navigationView.getMenu().getItem(i).setChecked(false);
+                }
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container,new UserProfile());
+                ft.commit();
+            }
+        });
+//
 
     }
     @Override

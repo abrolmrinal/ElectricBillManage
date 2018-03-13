@@ -36,5 +36,7 @@
 
     <string name="sharedPrefFile1">com.mc.group3.electricbillmanage.SHARED_PREF_1</string>
     <string name="sharedPrefDefaultUsername">username</string>
+    <string name="FirstName">First Name</string>
+    <string name="PhoneNo">Phone Number</string>
 
 </resources>
