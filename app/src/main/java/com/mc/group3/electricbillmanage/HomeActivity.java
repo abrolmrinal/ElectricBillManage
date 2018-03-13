@@ -1,6 +1,7 @@
 package com.mc.group3.electricbillmanage;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout mDotLayout;
     private TextView[] mDots;
 
+    ConstraintLayout CL;
     private Button nxbt;
     private Button prvbt;
     private FrameLayout nxtFL;
@@ -52,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         mDotLayout = (LinearLayout)findViewById(R.id.dotsLayout);
         mSlideViewPager = findViewById(R.id.slideviewpager);
 
+        CL = findViewById(R.id.homeConstraintLayout);
         nxbt = (Button) findViewById(R.id.nxtbt);
         prvbt = (Button) findViewById((R.id.prevbt));
         nxtFL = findViewById(R.id.nextButtonFrameLayout);
@@ -111,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (mDots.length > 0)
         {
-            mDots[position].setTextColor(getResources().getColor(R.color.colorWhite));
+            mDots[position].setTextColor(getResources().getColor(R.color.accent3));
         }
     }
 
@@ -133,24 +136,27 @@ public class HomeActivity extends AppCompatActivity {
                 prvbt.setVisibility(View.INVISIBLE);
                 prevFL.setVisibility(View.INVISIBLE);
                 nxbt.setBackground(getResources().getDrawable(R.drawable.ic_arrow_forward_white_24dp));
+                CL.setBackgroundColor(getResources().getColor(R.color.colorWT1));
 //                nxbt.setText("Next");
 //                prvbt.setText("");
-            }else if(i==mDots.length-1)
+            }if(i==mDots.length-1)
             {
                 nxbt.setEnabled(true);
                 prvbt.setEnabled(true);
                 prvbt.setVisibility(View.VISIBLE);
                 prevFL.setVisibility(View.VISIBLE);
+                CL.setBackgroundColor(getResources().getColor(R.color.colorWT3));
 //                nxbt.setText("");
 //                prvbt.setText("Back");
                 nxbt.setBackground(getResources().getDrawable(R.drawable.ic_check_white_24dp));
             }
-            else
+            if(i == mDots.length - 2)
             {
                 nxbt.setEnabled(true);
                 prvbt.setEnabled(true);
                 prvbt.setVisibility(View.VISIBLE);
                 prevFL.setVisibility(View.VISIBLE);
+                CL.setBackgroundColor(getResources().getColor(R.color.colorWT2));
                 nxbt.setBackground(getResources().getDrawable(R.drawable.ic_arrow_forward_white_24dp));
 //                nxbt.setText("Next");
 //                prvbt.setText("Back");

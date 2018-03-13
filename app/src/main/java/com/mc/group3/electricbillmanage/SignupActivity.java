@@ -3,6 +3,7 @@ package com.mc.group3.electricbillmanage;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.*;
 import android.view.View;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup);
 
         signupUsernameEdit = findViewById(R.id.signupUsernameEdit);

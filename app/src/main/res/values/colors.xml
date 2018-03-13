@@ -14,12 +14,15 @@
 
 
     <color name="colorSplash">#9f9fa3</color>
-    <color name="colorWT1">#0099e5</color>
-    <color name="colorWT2">#ff4c4c</color>
-    <color name="colorWT3">#34bf49</color>
+    <color name="colorWT1">#3294D5</color>
+    <color name="colorWT2">#2F6690</color>
+    <color name="colorWT3">#16425B</color>
     <color name="colorWT">#7f181b</color>
 
-    <color name="home_bg">#222454</color>
+    <color name="dashboardTheme">#3498db</color>
+    <color name="navHeaderColor">#3294D5</color>
+
+    <color name="home_bg">#3294D5</color>
     <color name="accent1">#ffffff</color>
     <color name="accent2">#ffffff</color>
     <color name="accent3">#40000000</color>
