@@ -38,10 +38,17 @@ public class LauncherActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
+    private FirebaseDatabase firebaseDatabase;
 
-    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage.username";
+    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage";
+    private final String USER_NAME_VALUE = "com.mc.group3.electricbillmanage.username";
+    private final String MOBILE_VALUE = "com.mc.group3.electricbillmanage.mobile";
+    private final String ADDR_VALUE = "com.mc.group3.electricbillmanage.address";
     private final String SIGNUP = "com.mc.group3.electricbillmanage.signup";
+
     private String recv_username;
+    private long recv_mobile;
+    private String recv_address;
 
     TextView userEmail;
     TextView userName;
@@ -77,7 +84,9 @@ public class LauncherActivity extends AppCompatActivity {
                 ///> Update username of new user
                 SharedPreferences SP = getApplicationContext().getSharedPreferences(
                         getString(R.string.sharedPrefFile1), Context.MODE_PRIVATE);
-                recv_username = SP.getString(EXTRA_MESSAGE, getString(R.string.sharedPrefDefaultUsername));
+                recv_username = SP.getString(USER_NAME_VALUE, getString(R.string.sharedPrefDefaultUsername));
+                recv_mobile = SP.getLong(MOBILE_VALUE, 0);
+                recv_address = SP.getString(ADDR_VALUE, "addr/addr");
                 UserProfileChangeRequest newProfile = new UserProfileChangeRequest.Builder()
                         .setDisplayName(recv_username).build();
 
@@ -89,11 +98,18 @@ public class LauncherActivity extends AppCompatActivity {
                     }
                 });
 
-                ///> Add new user to database and initialise values to zero
                 String uid = firebaseUser.getUid();
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                ///> Add user details to database
+                DatabaseReference dRef_userdata = firebaseDatabase.getReference();
+                String pushInUserData = dRef_userdata.child("user_data").push().getKey();
+                dRef_userdata.child("user_data").child(pushInUserData).setValue(uid);
+                dRef_userdata.child("user_data").child(uid).child("address").setValue(recv_address);
+                dRef_userdata.child("user_data").child(uid).child("phone_no").setValue(recv_mobile);
+
+                ///> Add new user to database and initialise values to zero
                 DatabaseReference databaseReference = firebaseDatabase.getReference();
-                String pushedUID = databaseReference.push().getKey();
+                String pushedUID = databaseReference.child("live_reading").push().getKey();
                 databaseReference.child("live_reading").child(pushedUID).setValue(uid);
                 databaseReference.child("live_reading").child(uid).child("usage_week").setValue(111111);
                 databaseReference.child("live_reading").child(uid).child("usage_month").setValue(111111);

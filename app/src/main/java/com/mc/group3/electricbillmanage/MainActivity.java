@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 150;
+    private static int SPLASH_TIME_OUT = 250;
 
 
     @Override

@@ -21,10 +21,14 @@
     <string name="LoginButtonText">Login</string>
     <string name="IncorrectEmailOrPass">Incorrect Email or Password</string>
 
+    <string name="MobileHint">Mobile Phone</string>
+    <string name="AddressHint">Address</string>
     <string name="SignupButtonText">Create Account</string>
     <string name="EmptyEmailandPass">Enter email and password</string>
     <string name="EmptyEmailField">Enter email address</string>
     <string name="EmptyPasswordField">Enter password</string>
+    <string name="EmptyMobileField">Enter mobile number</string>
+    <string name="EmptyAddressField">Enter address</string>
     <string name="ShortPassword">Password must be 8 or more characters</string>
 
     <string name="SignupFailed">Signup failed</string>

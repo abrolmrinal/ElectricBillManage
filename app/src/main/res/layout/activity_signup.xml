@@ -26,7 +26,7 @@
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
@@ -65,6 +65,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupEmailEdit" />
 
+    <EditText
+        android:id="@+id/signupMobileEdit"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="@string/MobileHint"
+        android:textColorHint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupPassEdit" />
+
+    <EditText
+        android:id="@+id/signupAddressEdit"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        android:hint="@string/AddressHint"
+        android:textColorHint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupMobileEdit" />
+
     <Button
         android:id="@+id/signupButton"
         android:layout_width="330dp"
@@ -81,6 +111,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupPassEdit"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/signupLogoImage"
+        app:layout_constraintVertical_bias="0.825" />
 </android.support.constraint.ConstraintLayout>

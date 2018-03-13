@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.Context;
 
+import com.google.android.gms.auth.account.WorkAccountApi;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,12 +22,17 @@ public class SignupActivity extends AppCompatActivity {
     private EditText signupUsernameEdit;
     private EditText signupEmailEdit;
     private EditText signupPassEdit;
+    private EditText signupMobileEdit;
+    private EditText signupAddressEdit;
     private Button signupButton;
 
     private FirebaseAuth firebaseAuth;
 
-    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage.username";
+    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage";
     private final String SIGNUP = "com.mc.group3.electricbillmanage.signup";
+    private final String USER_NAME_VALUE = "com.mc.group3.electricbillmanage.username";
+    private final String MOBILE_VALUE = "com.mc.group3.electricbillmanage.mobile";
+    private final String ADDR_VALUE = "com.mc.group3.electricbillmanage.address";
 
 
     @Override
@@ -37,6 +43,8 @@ public class SignupActivity extends AppCompatActivity {
         signupUsernameEdit = findViewById(R.id.signupUsernameEdit);
         signupEmailEdit = findViewById(R.id.signupEmailEdit);
         signupPassEdit = findViewById(R.id.signupPassEdit);
+        signupMobileEdit = findViewById(R.id.signupMobileEdit);
+        signupAddressEdit = findViewById(R.id.signupAddressEdit);
         signupButton = findViewById(R.id.signupButton);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -46,6 +54,9 @@ public class SignupActivity extends AppCompatActivity {
         String username = signupUsernameEdit.getText().toString();
         String email = signupEmailEdit.getText().toString();
         String password = signupPassEdit.getText().toString();
+        String mobile_string = signupMobileEdit.getText().toString();
+        long mobile;
+        String address = signupAddressEdit.getText().toString();
 
         if(email.equals("") && password.equals("")){
             Toast.makeText(getApplicationContext(), getString(R.string.EmptyEmailandPass), Toast.LENGTH_SHORT).show();
@@ -63,12 +74,23 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.ShortPassword), Toast.LENGTH_SHORT).show();
             signupPassEdit.setText("");
         }
+        else if(mobile_string.equals("")){
+            Toast.makeText(getApplicationContext(), getString(R.string.EmptyMobileField), Toast.LENGTH_SHORT).show();
+            signupPassEdit.setText("");
+        }
+        else if(address.equals("")){
+            Toast.makeText(getApplicationContext(), getString(R.string.EmptyAddressField), Toast.LENGTH_SHORT).show();
+            signupPassEdit.setText("");
+        }
         else{
+            mobile = Long.parseLong(mobile_string);
             //Save username to a SharedPreferences file
             SharedPreferences SP = getApplicationContext().getSharedPreferences(
                     getString(R.string.sharedPrefFile1), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = SP.edit();
-            editor.putString(EXTRA_MESSAGE, username);
+            editor.putString(USER_NAME_VALUE, username);
+            editor.putLong(MOBILE_VALUE, mobile);
+            editor.putString(ADDR_VALUE, address);
             editor.apply();
 
             firebaseAuth.createUserWithEmailAndPassword(email, password)
