@@ -12,6 +12,14 @@ import android.widget.*;
 import android.widget.LinearLayout.LayoutParams;
 import android.view.Gravity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Bills_History extends Fragment {
 
     View mBillsHistoryView;
@@ -27,6 +35,10 @@ public class Bills_History extends Fragment {
     private String from;
     private String amount;
 
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private FirebaseDatabase mFirebaseDatabase;
+
 
     public Bills_History() {
         // Required empty public constructor
@@ -40,8 +52,66 @@ public class Bills_History extends Fragment {
 
         mBillsHistory_linearLayout = mBillsHistoryView.findViewById(R.id.mBillsHistory_linearLayout);
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+
+
+//        String temp_to = "11111";
+//        String temp_from = "22222";
+//        String temp_amount = "33333";
+
+        DatabaseReference refToUserBillHistory = mFirebaseDatabase.getReference();
+        refToUserBillHistory.child("bill_history").child(mFirebaseUser.getUid()).getRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(int i = 1; i <= 12; i++) {
+                    System.out.println("+++++++++++++++ curr_child: " + i);
+                    if(dataSnapshot.hasChild(Integer.toString(i))){
+                        System.out.println("+++++++++++++++ found child");
+                        String temp_to = dataSnapshot.child(Integer.toString(i)).child("to_date").getValue(String.class);
+                        String temp_from = dataSnapshot.child(Integer.toString(i)).child("from_date").getValue(String.class);
+                        String temp_amount = Long.toString(dataSnapshot.child(Integer.toString(i)).child("amount").getValue(Long.class));
+
+                        returnHistoryEntry(temp_to, temp_from, temp_amount);
+                        mBillsHistory_linearLayout.addView(mBillsHistory_tempCardView);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        /*DatabaseReference refToUserBillHistory = mFirebaseDatabase.getReference();
+        for(int i = 1; i <= 12; i++){
+            final int curr_child = i;
+            if (refToUserBillHistory.child("bill_history").child(user_addr).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.hasChild(Integer.toString(curr_child))){
+                        String temp_to = dataSnapshot.child(Integer.toString(curr_child)).child("to_date").getValue(String.class);
+                        String temp_from = dataSnapshot.child(Integer.toString(curr_child)).child("from_date").getValue(String.class);
+                        String temp_amount = dataSnapshot.child(Integer.toString(curr_child)).child("amount").getValue(String.class);
+
+                        returnHistoryEntry(temp_to, temp_from, temp_amount);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }*/
+
+
         ///>Retrieve data from entry
-        String temp_to = "11111";
+        /*String temp_to = "11111";
         String temp_from = "22222";
         String temp_amount = "33333";
         returnHistoryEntry(temp_to, temp_from, temp_amount);
@@ -51,7 +121,7 @@ public class Bills_History extends Fragment {
         temp_from = "55555";
         temp_amount = "88888";
         returnHistoryEntry(temp_to, temp_from, temp_amount);
-        mBillsHistory_linearLayout.addView(mBillsHistory_tempCardView);
+        mBillsHistory_linearLayout.addView(mBillsHistory_tempCardView);*/
 
         return mBillsHistoryView;
 
