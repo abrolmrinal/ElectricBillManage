@@ -41,8 +41,13 @@
 
     <string name="appName">ElectricBillManage</string>
     <string name="dashboardActName">Dashboard</string>
-    <string user="accountDetailsActName">Account Details</string>
+    <string name="accountDetailsActName">Account Details</string>
     <string name="billsActName">Bills</string>
     <string name="complaintsActName">Complaints</string>
+
+
+    ///>Post Midsem
+    <string name="bills_history_string">History</string>
+    <string name="bills_pending_string">Pending Bills</string>
 
 </resources>
