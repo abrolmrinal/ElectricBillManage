@@ -40,29 +40,52 @@ public class Dashboard_Usage extends Fragment implements Runnable {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard_usage, container, false);
-        final List<TabDigit> WEEK=new ArrayList<TabDigit>();
+        final List<TabDigit> TOTAL_VALUE = new ArrayList<TabDigit>();
+        final List<TabDigit> TODAY=new ArrayList<TabDigit>();
         final List<TabDigit> MONTH=new ArrayList<TabDigit>();
 
-        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit1);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit13);
+        tabDigit.setBackgroundColor(getResources().getColor(R.color.colorWT));
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TOTAL_VALUE.add(tabDigit);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit14);
+        tabDigit.elapsedTime(700);
+        TOTAL_VALUE.add(tabDigit);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit15);
+        tabDigit.elapsedTime(700);
+        TOTAL_VALUE.add(tabDigit);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit16);
+        tabDigit.elapsedTime(700);
+        TOTAL_VALUE.add(tabDigit);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit17);
+        tabDigit.elapsedTime(700);
+        TOTAL_VALUE.add(tabDigit);
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit18);
+        tabDigit.elapsedTime(700);
+        TOTAL_VALUE.add(tabDigit);
+
+        tabDigit = (TabDigit) view.findViewById(R.id.tabDigit1);
+        tabDigit.setBackgroundColor(getResources().getColor(R.color.colorWT));
+        tabDigit.elapsedTime(700);
+        TODAY.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit2);
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TODAY.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit3);
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TODAY.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit4);
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TODAY.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit5);
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TODAY.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit6);
         tabDigit.elapsedTime(700);
-        WEEK.add(tabDigit);
+        TODAY.add(tabDigit);
 
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit7);
+        tabDigit.setBackgroundColor(getResources().getColor(R.color.colorWT));
         tabDigit.elapsedTime(700);
         MONTH.add(tabDigit);
         tabDigit = (TabDigit) view.findViewById(R.id.tabDigit8);
@@ -84,7 +107,7 @@ public class Dashboard_Usage extends Fragment implements Runnable {
         FirebaseDatabase fdb= FirebaseDatabase.getInstance();
         DatabaseReference myref=fdb.getReference();
         System.out.println("userid="+firebaseUser.getUid());
-        DatabaseReference week_ref=myref.child("live_reading").child(firebaseUser.getUid()).child("usage_week").getRef();
+        /*DatabaseReference week_ref=myref.child("live_reading").child(firebaseUser.getUid()).child("usage_week").getRef();
         DatabaseReference month_ref=myref.child("live_reading").child(firebaseUser.getUid()).child("usage_month").getRef();
 
         week_ref.addValueEventListener(new ValueEventListener() {
@@ -213,7 +236,232 @@ public class Dashboard_Usage extends Fragment implements Runnable {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+        });*/
+
+
+        DatabaseReference getCurrUserAddrRef = fdb.getReference();
+        getCurrUserAddrRef.child("user_data").child(firebaseUser.getUid()).child("address").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String address = dataSnapshot.getValue(String.class);
+
+                DatabaseReference total_ref = FirebaseDatabase.getInstance().getReference();
+                total_ref.child("live_reading_addr").child(address).child("usage").addValueEventListener(new ValueEventListener() {
+                    String prev_total;
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String total_val_string = dataSnapshot.getValue(String.class);
+                        Float total_val_float = Float.parseFloat(total_val_string);
+                        String total_val_round  = Float.toString(Math.round(total_val_float * 10.0f) / 10.0f);
+                        total_val_round = total_val_round.replace(".", "");
+                        int total_val = Integer.parseInt(total_val_round);
+                        if(total_val != -1) {
+                            String total_str = Integer.toString(total_val);
+                            Log.d("val="+total_str, "Value changed");
+                            int len = total_str.length();
+                            String temp="";
+                            for(int j =len;j<6;j++)
+                            {
+                                temp+="0";
+                            }
+                            total_str=temp+total_str;
+                            len=total_str.length();
+                            if (len <= 6) {
+                                for (int i = len - 1; i >= 0; i--) {
+                                    if(prev_total!=null && i<prev_total.length())
+                                    {
+                                        Log.d("curr="+Character.toString(total_str.charAt(i))+" prev="+Character.toString(prev_total.charAt(i)),"Hi");
+                                        if(Character.getNumericValue(total_str.charAt(i))!= Character.getNumericValue(prev_total.charAt(i)))
+                                        {
+                                            int val=Character.getNumericValue(total_str.charAt(i));
+                                            if(val==0)
+                                            {
+                                                TOTAL_VALUE.get(len - 1 - i).setChar(9);
+
+                                            }
+                                            else
+                                            {
+                                                TOTAL_VALUE.get(len - 1 - i).setChar(val - 1);
+
+                                            }
+                                            TOTAL_VALUE.get(len - 1 - i).start();
+                                        }
+
+                                    }
+                                    else {
+                                        int val=Character.getNumericValue(total_str.charAt(i));
+                                        if(val==0)
+                                        {
+                                            TOTAL_VALUE.get(len - 1 - i).setChar(9);
+
+                                        }
+                                        else
+                                        {
+                                            TOTAL_VALUE.get(len - 1 - i).setChar(val - 1);
+
+                                        }
+                                        TOTAL_VALUE.get(len - 1 - i).start();
+                                    }
+                                }
+                            }
+                            prev_total=new String(total_str);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                DatabaseReference daily_ref = FirebaseDatabase.getInstance().getReference();
+                daily_ref.child("day_reading_addr").child(address).child("usage").addValueEventListener(new ValueEventListener() {
+                    String prev_daily;
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String daily_val_string = dataSnapshot.getValue(String.class);
+                        Float daily_val_float = Float.parseFloat(daily_val_string);
+                        String daily_val_round  = Float.toString(Math.round(daily_val_float * 10.0f) / 10.0f);
+                        daily_val_round = daily_val_round.replace(".", "");
+                        int daily_val = Integer.parseInt(daily_val_round);
+                        if(daily_val != -1) {
+                            String daily_str = Integer.toString(daily_val);
+                            Log.d("val="+daily_str, "Value changed");
+                            int len = daily_str.length();
+                            String temp="";
+                            for(int j =len;j<6;j++)
+                            {
+                                temp+="0";
+                            }
+                            daily_str=temp+daily_str;
+                            len=daily_str.length();
+                            if (len <= 6) {
+                                for (int i = len - 1; i >= 0; i--) {
+                                    if(prev_daily!=null && i<prev_daily.length())
+                                    {
+                                        Log.d("curr="+Character.toString(daily_str.charAt(i))+" prev="+Character.toString(prev_daily.charAt(i)),"Hi");
+                                        if(Character.getNumericValue(daily_str.charAt(i))!= Character.getNumericValue(prev_daily.charAt(i)))
+                                        {
+                                            int val=Character.getNumericValue(daily_str.charAt(i));
+                                            if(val==0)
+                                            {
+                                                TODAY.get(len - 1 - i).setChar(9);
+
+                                            }
+                                            else
+                                            {
+                                                TODAY.get(len - 1 - i).setChar(val - 1);
+
+                                            }
+                                            TODAY.get(len - 1 - i).start();
+                                        }
+
+                                    }
+                                    else {
+                                        int val=Character.getNumericValue(daily_str.charAt(i));
+                                        if(val==0)
+                                        {
+                                            TODAY.get(len - 1 - i).setChar(9);
+
+                                        }
+                                        else
+                                        {
+                                            TODAY.get(len - 1 - i).setChar(val - 1);
+
+                                        }
+                                        TODAY.get(len - 1 - i).start();
+                                    }
+                                }
+                            }
+                            prev_daily=new String(daily_str);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                DatabaseReference month_ref = FirebaseDatabase.getInstance().getReference();
+                month_ref.child("month_reading_addr").child(address).child("usage").addValueEventListener(new ValueEventListener() {
+                    String prev_month;
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String month_val_string = dataSnapshot.getValue(String.class);
+                        Float month_val_float = Float.parseFloat(month_val_string);
+                        String month_val_round  = Float.toString(Math.round(month_val_float * 10.0f) / 10.0f);
+                        month_val_round = month_val_round.replace(".", "");
+                        int week_val = Integer.parseInt(month_val_round);
+                        if(week_val != -1) {
+                            String month_str = Integer.toString(week_val);
+                            Log.d("val="+month_str, "Value changed");
+                            int len = month_str.length();
+                            String temp="";
+                            for(int j =len;j<6;j++)
+                            {
+                                temp+="0";
+                            }
+                            month_str=temp+month_str;
+                            len=month_str.length();
+                            if (len <= 6) {
+                                for (int i = len - 1; i >= 0; i--) {
+                                    if(prev_month!=null && i<prev_month.length())
+                                    {
+                                        Log.d("curr="+Character.toString(month_str.charAt(i))+" prev="+Character.toString(prev_month.charAt(i)),"Hi");
+                                        if(Character.getNumericValue(month_str.charAt(i))!= Character.getNumericValue(prev_month.charAt(i)))
+                                        {
+                                            int val=Character.getNumericValue(month_str.charAt(i));
+                                            if(val==0)
+                                            {
+                                                MONTH.get(len - 1 - i).setChar(9);
+
+                                            }
+                                            else
+                                            {
+                                                MONTH.get(len - 1 - i).setChar(val - 1);
+
+                                            }
+                                            MONTH.get(len - 1 - i).start();
+                                        }
+
+                                    }
+                                    else {
+                                        int val=Character.getNumericValue(month_str.charAt(i));
+                                        if(val==0)
+                                        {
+                                            MONTH.get(len - 1 - i).setChar(9);
+
+                                        }
+                                        else
+                                        {
+                                            MONTH.get(len - 1 - i).setChar(val - 1);
+
+                                        }
+                                        MONTH.get(len - 1 - i).start();
+                                    }
+                                }
+                            }
+                            prev_month=new String(month_str);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
+
 
 
 

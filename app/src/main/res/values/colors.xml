@@ -10,6 +10,7 @@
     <color name="colorTransparentWhite">#ffffff</color>
 
     <color name="colorWhite">#ffffff</color>
+    <color name="colorGreyCardBG">#88ffffff</color>
     <color name="colorBlack">#000000</color>
 
 
@@ -17,7 +18,7 @@
     <color name="colorWT1">#3294D5</color>
     <color name="colorWT2">#2F6690</color>
     <color name="colorWT3">#16425B</color>
-    <color name="colorWT">#7f181b</color>
+    <color name="colorWT">#991111</color>
 
     <color name="dashboardTheme">#3498db</color>
     <color name="navHeaderColor">#16425B</color>
