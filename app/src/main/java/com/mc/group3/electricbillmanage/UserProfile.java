@@ -40,7 +40,6 @@ public class UserProfile extends Fragment {
         DatabaseReference phone_ref=myref.child("user_data").child(firebaseUser.getUid()).child("phone_no").getRef();
         DatabaseReference address_ref=myref.child("user_data").child(firebaseUser.getUid()).child("address").getRef();
 
-
         final TextView phone_no = (TextView) view.findViewById(R.id.phone_number_field);
         TextView email_id = (TextView) view.findViewById(R.id.emai_field);
         TextView uname = (TextView) view.findViewById(R.id.Name_field);

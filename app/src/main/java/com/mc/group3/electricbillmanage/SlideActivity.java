@@ -18,5 +18,4 @@ public class SlideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_slide);
     }
 
-
 }
