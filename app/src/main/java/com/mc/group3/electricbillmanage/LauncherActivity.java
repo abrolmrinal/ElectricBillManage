@@ -46,6 +46,7 @@ public class LauncherActivity extends AppCompatActivity {
     private final String MOBILE_VALUE = "com.mc.group3.electricbillmanage.mobile";
     private final String ADDR_VALUE = "com.mc.group3.electricbillmanage.address";
     private final String SIGNUP = "com.mc.group3.electricbillmanage.signup";
+    private final String LOGIN = "com.mc.group3.electricbillmanage.login";
 
     private String recv_username;
     private long recv_mobile;
@@ -101,6 +102,14 @@ public class LauncherActivity extends AppCompatActivity {
 
                 String uid = firebaseUser.getUid();
                 firebaseDatabase = FirebaseDatabase.getInstance();
+                firebaseUser.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(LauncherActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 ///> Add user details to database
                 DatabaseReference dRef_userdata = firebaseDatabase.getReference();
                 String pushInUserData = dRef_userdata.child("user_data").push().getKey();
@@ -108,13 +117,29 @@ public class LauncherActivity extends AppCompatActivity {
                 dRef_userdata.child("user_data").child(uid).child("address").setValue(recv_address);
                 dRef_userdata.child("user_data").child(uid).child("phone_no").setValue(recv_mobile);
 
-                ///> Add new user to database and initialise values to zero
-                DatabaseReference databaseReference = firebaseDatabase.getReference();
-                String pushedUID = databaseReference.child("live_reading").push().getKey();
-                databaseReference.child("live_reading").child(pushedUID).setValue(uid);
-                databaseReference.child("live_reading").child(uid).child("usage_week").setValue(111111);
-                databaseReference.child("live_reading").child(uid).child("usage_month").setValue(111111);
+//                ///> Add new user to database and initialise values to zero
+//                DatabaseReference databaseReference = firebaseDatabase.getReference();
+//                String pushedUID = databaseReference.child("live_reading").push().getKey();
+//                databaseReference.child("live_reading").child(pushedUID).setValue(uid);
+//                databaseReference.child("live_reading").child(uid).child("usage_week").setValue(111111);
+//                databaseReference.child("live_reading").child(uid).child("usage_month").setValue(111111);
 
+            }
+
+            else if(callingActivity.equals(LOGIN)){
+                if(!firebaseUser.isEmailVerified()){
+                    firebaseUser.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(LauncherActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else{
+                    firebaseUser.reload();
+                }
             }
         }
 

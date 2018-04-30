@@ -12,10 +12,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginActivity extends AppCompatActivity {
+    private final String EXTRA_MESSAGE = "com.mc.group3.electricbillmanage";
+    private final String LOGIN = "com.mc.group3.electricbillmanage.login";
+
     private EditText loginEmailEdit;
     private EditText loginPassEdit;
     private Button loginButton;
@@ -73,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Intent intentToLauncher = new Intent(getApplicationContext(), LauncherActivity.class);
+                                intentToLauncher.putExtra(EXTRA_MESSAGE, LOGIN);
                                 startActivity(intentToLauncher);
                                 finish();
                             }

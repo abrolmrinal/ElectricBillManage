@@ -1,6 +1,7 @@
 package com.mc.group3.electricbillmanage;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -39,6 +43,20 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
         firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser != null){
+            firebaseUser.reload();
+            if(!firebaseUser.isEmailVerified()){
+                firebaseUser.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(HomeActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+            else{
+                firebaseUser.reload();
+            }
             Intent intentToLauncher = new Intent(getApplicationContext(), LauncherActivity.class);
             startActivity(intentToLauncher);
             finish();
