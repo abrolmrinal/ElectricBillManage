@@ -1,0 +1,140 @@
+<html>
+<head>
+     <script type="text/javascript" src="file:///android_asset/js/ScreePlot.js" ></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="https://cdn.rawgit.com/arpitnarechania/d3-screeplot/master/dist/ScreePlot.js"></script>-->
+
+
+</head>
+
+<style type="text/css">
+  
+#screePlot{
+    font-size: 100%;
+    font-family:sans-serif;
+}
+
+#screePlot g{
+    cursor:crosshair !important;
+}
+
+#screePlot .bar:hover { fill: #9b59b6; }
+
+#screePlot .line .cumulative{
+  fill: none;
+  stroke: #3498db;
+  stroke-width: 2px;
+}
+
+#screePlot .grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+#screePlot .grid path {
+  stroke-width: 0;
+}
+
+#screePlot .line .crosshair {
+      fill: none;
+      stroke-width: 1px;
+    }
+
+#screePlot .line #crosshairX {
+  stroke: black;
+  stroke-opacity:0.25;
+}
+
+#screePlot .line #crosshairY {
+  stroke: black;
+  stroke-opacity:0.25;
+}
+
+#screePlot .overlay {
+  fill: none;
+  stroke: black;
+  pointer-events: all;
+  stroke-width: 1px;
+}
+</style>
+
+<body>
+<div id="screePlot"></div>
+<script type="text/javascript">
+
+  function makeStruct(names) {
+    var names = names.split(' ');
+    var count = names.length;
+    function constructor() {
+      for (var i = 0; i < count; i++) {
+        this[names[i]] = arguments[i];
+      }
+    }
+    return constructor;
+     }
+    
+  function loadData(data) {
+    // body...
+  // var arr =JSON.parse(data);  
+  var arr =data['data'];
+  var Item = makeStruct("factor eigenvalue cumulative_eigenvalue");
+  var dt=[]
+  for (var i = 0; i < arr.length; i++){
+    var obj = arr[i];
+    dt.push(new Item(obj['factor'],obj['eigenvalue'],obj['cumulative_eigenvalue']));
+    }
+
+  var screePlotData = dt;
+
+  var screePlotCSSOptions = {
+        domElement: "#screePlot",
+        width: $('#screePlot').parent().width(),
+        height: 550,
+        margin:{top: 20,right: 20,bottom: 20,left: 35},
+        showGridlines:false,
+        noOfGridlines:0,
+        showAxes:false,
+        svgBackground:'#FFFFFF',
+        barFill:'#3498db',
+        barStroke:'#FFFFFF',
+        barStrokeWidth:0,
+        selBarFill:'#2ECC71',
+        selBarStroke:'#FFFFFF',
+        selBarStrokeWidth:0,
+        circleFill:'#3498db',
+        circleStroke:'#FFFFFF',
+        circleStrokeWidth:1,
+        selCircleFill:'#2ECC71',
+        selCircleStroke:'#FFFFFF',
+        selCircleStrokeWidth:1,
+        lineStrokeWidth:2,
+        filterLineStrokeWidth:2,
+        nodeTextColor:"#ffff00"
+    };
+
+    var screePlotDataOptions = {
+        factorSelected:data['selected']
+    };
+
+    var screePlot = new ScreePlot(screePlotCSSOptions);
+    screePlot.initialize(); // initializes the SVG and UI elements
+    screePlot.render(screePlotData,screePlotDataOptions); // Use this to render as well as update with new data and configurations.
+}
+
+// var data = '[{ "factor": 1,"eigenvalue": 50,"cumulative_eigenvalue":50},{"factor": 2,"eigenvalue": 20,"cumulative_eigenvalue":70},{"factor": 3,"eigenvalue": 10,"cumulative_eigenvalue":80},{"factor": 4,"eigenvalue": 5,"cumulative_eigenvalue":85}]';
+
+// // var Item = makeStruct("factor eigenvalue cumulative_eigenvalue");
+
+// // var data2=[new Item(1,20,20),new Item(2,40,40),new Item(3,60,60)]
+
+// loadData(data);
+
+</script>
+ 
+
+
+</body>
+</html>

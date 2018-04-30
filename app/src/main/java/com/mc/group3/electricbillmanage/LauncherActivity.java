@@ -195,11 +195,16 @@ public class LauncherActivity extends AppCompatActivity {
                                 ft.replace(R.id.fragment_container,new Bills());
                                 ft.commit();
                                 break;
+                            case R.id.nav_setting:
+                                ft.replace(R.id.fragment_container,new Settings());
+                                ft.commit();
+                                break;
                             case R.id.nav_logout:
                                 firebaseAuth.signOut();
                                 Intent intentToLogin = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intentToLogin);
                                 finish();
+
                         }
                         return true;
                     }
@@ -229,6 +234,9 @@ public class LauncherActivity extends AppCompatActivity {
                 ft.commit();
             }
         });
+
+        System.out.println("starting service");
+        startService(new Intent(this, FirebaseBackgroundService.class));
 //
 
     }

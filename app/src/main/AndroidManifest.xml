@@ -3,10 +3,11 @@
     package="com.mc.group3.electricbillmanage">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -35,6 +36,18 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ResetPasswordActivity"
             android:parentActivityName=".LoginActivity"/>
+
+        <service
+            android:name=".FirebaseBackgroundService"
+            android:exported="false">
+        </service>
+
+        <receiver android:name=".StartFirebaseAtBoot" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
